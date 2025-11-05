@@ -9,7 +9,7 @@ image = (
     Image.from_debian_base(python_version=(3, 12))
     .with_apt_packages("ca-certificates", "build-essential")
     .with_uv_project(pyproject_file=ROOT_DIR / "pyproject.toml")
-    .with_source_folder(ROOT_DIR / "src" / "data_loading")
+    # .with_source_folder(ROOT_DIR / "src" / "data_loading")
 )
 
 
@@ -32,6 +32,6 @@ async def t1(data: str = "hello") -> str:
 if __name__ == "__main__":
     # Works with and without root_dir
     flyte.init_from_config(root_dir=ROOT_DIR)  # should we make this work?
-    run = flyte.with_runcontext("local", ).run(t1, data="world")
+    run = flyte.with_runcontext(copy_style="all").run(t1, data="world")
     print(run.name)
     print(run.url)

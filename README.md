@@ -84,6 +84,17 @@ Nov 05 12:06:18.995   - data_loading/raw_data.sql
 Nov 05 12:06:18.995   - data_loading/some_data/my_data.csv
 ```
 
+### Including `.with_runcontext(copy_style="all")` works
+With `with_runcontext(copy_style="all")` it works. Even when `.with_source_folder(ROOT_DIR / "src" / "data_loading")` is removed!
+
+```
+Nov 05 14:21:13.310 13:21:13.305761 WARNING  taskrunner.py:186 -  Task a0 started at 1762348873.3057163                                                                             
+Nov 05 14:21:13.584 This is a test function from utils.py
+Nov 05 14:21:13.584 SQL file is a file: True
+Nov 05 14:21:13.584 SQL file path: /root/src/data_loading/raw_data.sql
+Nov 05 14:21:13.584 CSV file is a file: True
+Nov 05 14:21:13.584 CSV file path: /root/src/data_loading/some_data/my_data.csv
+```
 
 # Known issues today:
 * `./src` doesn't work, needs the full path
