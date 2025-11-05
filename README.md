@@ -44,6 +44,8 @@ Nov 05 12:14:21.770 SQL file is a file: False
 Nov 05 12:14:21.770 SQL file path: /root/src/data_loading/raw_data.sql
 Nov 05 12:14:21.770 CSV file is a file: False
 Nov 05 12:14:21.770 CSV file path: /root/src/data_loading/some_data/my_data.csv
+Nov 05 14:25:49.569 data file is a file: False
+Nov 05 14:25:49.569 data file path: /root/data/do-not-include.csv
 ```
 
 ### Including `--root-dir`
@@ -94,7 +96,10 @@ Nov 05 14:21:13.584 SQL file is a file: True
 Nov 05 14:21:13.584 SQL file path: /root/src/data_loading/raw_data.sql
 Nov 05 14:21:13.584 CSV file is a file: True
 Nov 05 14:21:13.584 CSV file path: /root/src/data_loading/some_data/my_data.csv
+Nov 05 14:25:49.569 data file is a file: True
+Nov 05 14:25:49.569 data file path: /root/data/do-not-include.csv
 ```
+An issue here is that it copies all into the image, also things that should be ignored via .gitignore such as the `data` directory.
 
 # Known issues today:
 * `./src` doesn't work, needs the full path

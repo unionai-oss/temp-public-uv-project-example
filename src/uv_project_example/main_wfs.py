@@ -26,12 +26,19 @@ async def t1(data: str = "hello") -> str:
     csv = ROOT_DIR / "src" / "data_loading" / "some_data" / "my_data.csv"
     print(f"CSV file is a file: {csv.exists()}")
     print(f"CSV file path: {csv.resolve()}")
+
+    # Create a file under data (assume this is a multiple GB size file)
+    # This should be false in remote as it is in the .gitignore (or better: not checked into git)
+    data_file = ROOT_DIR / "data" / "do-not-include.csv"
+    print(f"data file is a file: {data_file.exists()}")
+    print(f"data file path: {data_file.resolve()}")
+
     return f"Hello {data} {i=}"
 
 # PYTHONPATH=/Users/ytong/go/src/github.com/flyteorg/flyte-sdk/src: flyte -vvv -c ~/.flyte/demo.yaml run --root-dir `pwd`/src/ src/uv_project_example/main_wfs.py t1
 if __name__ == "__main__":
     # Works with and without root_dir
     flyte.init_from_config(root_dir=ROOT_DIR)  # should we make this work?
-    run = flyte.with_runcontext(copy_style="all").run(t1, data="world")
+    run = flyte.with_runcontext(mode="remote", copy_style="all").run(t1, data="world")
     print(run.name)
     print(run.url)
