@@ -8,7 +8,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "flyte==2.0.0b26",
+    "flyte@git+https://github.com/flyteorg/flyte-sdk.git@7fb7d693c99ae44fc720ee78ad11ad533c5447de",
 ]
 
 [build-system]

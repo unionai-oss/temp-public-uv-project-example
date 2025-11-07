@@ -209,8 +209,8 @@ wheels = [
 
 [[package]]
 name = "flyte"
-version = "2.0.0b26"
-source = { registry = "https://pypi.org/simple" }
+version = "2.0.0b30.dev3+g7fb7d693c"
+source = { git = "https://github.com/flyteorg/flyte-sdk.git?rev=7fb7d693c99ae44fc720ee78ad11ad533c5447de#7fb7d693c99ae44fc720ee78ad11ad533c5447de" }
 dependencies = [
     { name = "aiofiles" },
     { name = "aiolimiter" },
@@ -233,9 +233,6 @@ dependencies = [
     { name = "rich-click" },
     { name = "toml" },
 ]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ff/9c/4ce5bee1a6bca2f43c0a589eda2ae7c8bb31af63dec831eb669ea70aea8f/flyte-2.0.0b26-py3-none-any.whl", hash = "sha256:d000947d7455b946277b9709f9e7b14933389ea4c1e9c484df82acbbd16ea05d", size = 381510, upload-time = "2025-10-29T22:27:12.218Z" },
-]
 
 [[package]]
 name = "flyteidl"
@@ -253,16 +250,13 @@ wheels = [
 
 [[package]]
 name = "flyteidl2"
-version = "2.0.0a11"
-source = { registry = "https://pypi.org/simple" }
+version = "2.0.0a14.dev3+g91ba87d5e"
+source = { git = "https://github.com/flyteorg/flyte.git?subdirectory=gen%2Fpython&rev=v2#91ba87d5e4d0a0b99706d87a568c7cbf2b94cb21" }
 dependencies = [
     { name = "googleapis-common-protos" },
     { name = "protobuf" },
     { name = "protoc-gen-openapiv2" },
     { name = "protovalidate" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/3e/83/ed4e62796135abd41d4440c220e8390b7dc026f7342c92555ac06a52da83/flyteidl2-2.0.0a11-py3-none-any.whl", hash = "sha256:17d72b25ab3aec21aef9d5b0cacf936560e25f4b898c196650e9c5a9259f5ff1", size = 192937, upload-time = "2025-10-29T22:04:42.92Z" },
 ]
 
 [[package]]
@@ -982,4 +976,4 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "flyte", specifier = "==2.0.0b26" }]
+requires-dist = [{ name = "flyte", git = "https://github.com/flyteorg/flyte-sdk.git?rev=7fb7d693c99ae44fc720ee78ad11ad533c5447de" }]

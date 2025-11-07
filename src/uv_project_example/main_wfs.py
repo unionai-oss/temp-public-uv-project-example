@@ -1,15 +1,18 @@
 import flyte
 from flyte import Image
 
-from src.uv_project_example.library_a.utils import some_test
+from uv_project_example.library_a.utils import some_test
 
-from src.core.config import ROOT_DIR
+from core.config import ROOT_DIR
 
 image = (
-    Image.from_debian_base(python_version=(3, 12))
+    Image.from_base("python:3.12-slim-bookworm").clone(name="flyte")
+    .with_apt_packages("git")
     .with_apt_packages("ca-certificates", "build-essential")
     .with_uv_project(pyproject_file=ROOT_DIR / "pyproject.toml")
-    # .with_source_folder(ROOT_DIR / "src" / "data_loading")
+    .with_commands("mkdir -p ./src/data_loading")
+    .with_source_folder(ROOT_DIR / "src" / "data_loading", dst="./src/data_loading")
+    .with_pip_packages("git+https://github.com/flyteorg/flyte-sdk.git@7fb7d693c99ae44fc720ee78ad11ad533c5447de")
 )
 
 
@@ -39,6 +42,6 @@ async def t1(data: str = "hello") -> str:
 if __name__ == "__main__":
     # Works with and without root_dir
     flyte.init_from_config(root_dir=ROOT_DIR)  # should we make this work?
-    run = flyte.with_runcontext(mode="remote", copy_style="all").run(t1, data="world")
+    run = flyte.with_runcontext(mode="remote").run(t1, data="world")
     print(run.name)
     print(run.url)
