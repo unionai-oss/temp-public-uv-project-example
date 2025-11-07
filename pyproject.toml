@@ -8,7 +8,7 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "flyte==2.0.0b26",
+    "flyte==2.0.0b29",
 ]
 
 [build-system]
